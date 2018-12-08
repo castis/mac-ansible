@@ -1,0 +1,13 @@
+---
+- name: remove items from dock
+  shell: dockutil --remove '{{ item }}'
+  ignore_errors: true
+  with_items: "{{ dockitems_to_remove }}"
+ 
+- name: add items to dock
+  shell: dockutil --find "{{ item.name }}" || dockutil --add "{{ item.path }}"
+  with_items: "{{ dockitems_to_persist }}"
+ 
+- name: assign order to dock items
+  shell: dockutil --move "{{ item.name }}" --position "{{ item.pos }}"
+  with_items: "{{ dockitems_to_persist }}"

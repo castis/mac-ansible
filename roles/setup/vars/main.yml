@@ -1,0 +1,68 @@
+---
+# list of applications to install
+general:
+  local_home: "{{ lookup('env','HOME') }}"
+
+# homebrew applications
+applications:
+  - git
+  - curl
+  - wget
+  - zsh
+  - vim
+  - dockutil
+
+# homebrew cask applications
+cask_applications:
+  - google-chrome
+  - slack
+  - iterm2
+  - caffeine
+  - docker
+  - 1password
+  - spotify
+  - steam
+
+dockitems_to_remove:
+  - Launchpad
+  - Mail
+  - Safari
+  - Contacts
+  - Notes
+  - Reminders
+  - Maps
+  - Photos
+  - Messages
+  - FaceTime
+  - iTunes
+  - iBooks
+  - App Store
+  - System Preferences
+  - Calendar
+  - News
+  - Siri
+ 
+dockitems_to_persist:
+  - name: "Firefox"
+    path: "/Applications/Firefox.app"
+    pos: 2
+  - name: "Sublime Text"
+    path: "/Applications/Sublime Text.app"
+    pos: 3
+  - name: "Slack"
+    path: "/Applications/Slack.app"
+    pos: 4
+  - name: "iTerm"
+    path: "/Applications/iTerm.app"
+    pos: 6
+  - name: "Spotify"
+    path: "/Applications/Spotify.app"
+    pos: 7
+
+
+
+
+
+
+
+

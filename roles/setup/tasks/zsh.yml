@@ -1,0 +1,20 @@
+---
+- name: install oh-my-zsh
+  git:
+    repo: "https://github.com/robbyrussell/oh-my-zsh.git"
+    dest: "{{ ansible_env.HOME + '/.oh-my-zsh' }}"
+    update: yes
+
+- name: set default shell
+  become: true
+  shell: "chsh -s $(which zsh) {{ ansible_user_id }}"
+
+- name: configure oh-my-zsh
+  template:
+    src: ".zshrc.j2"
+    dest: "{{ ansible_env.HOME + '/.zshrc' }}"
+
+- name: install my zsh theme
+  copy:
+    src: castis.zsh-theme
+    dest: "{{ ansible_env.HOME + '/.oh-my-zsh/themes/castis.zsh-theme' }}"
