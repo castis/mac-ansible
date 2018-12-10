@@ -1,18 +1,24 @@
 ---
 - name: install oh-my-zsh
   git:
-    repo: "https://github.com/robbyrussell/oh-my-zsh.git"
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
     dest: "{{ ansible_env.HOME + '/.oh-my-zsh' }}"
     update: yes
 
-- name: set default shell
-  become: true
-  shell: "chsh -s $(which zsh) {{ ansible_user_id }}"
+- name: set shell
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: /usr/local/bin/zsh
 
-- name: configure oh-my-zsh
+- name: zsh configuration
   template:
-    src: ".zshrc.j2"
+    src: .zshrc.j2
     dest: "{{ ansible_env.HOME + '/.zshrc' }}"
+
+- name: git configuration
+  template:
+    src: .gitconfig.j2
+    dest: "{{ ansible_env.HOME + '/.gitconfig' }}"
 
 - name: install my zsh theme
   copy:

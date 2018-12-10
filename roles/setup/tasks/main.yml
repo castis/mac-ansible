@@ -1,8 +1,8 @@
 - name: application installs
   include: brew_apps.yml 
 
-# - name: dock
-#   include: dock.yml
+- name: dock
+  include: dock.yml
 
-# - name: oh-my-zsh
-#   include: zsh.yml
+- name: oh-my-zsh
+  include: zsh.yml

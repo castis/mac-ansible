@@ -1,1 +1,1 @@
-ansible-playbook playbook.yml --become
+ansible-playbook main.yml

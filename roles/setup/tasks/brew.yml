@@ -1,0 +1,24 @@
+---
+- name: install homebrew
+  shell: 'yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' 
+  args:
+    creates: /usr/local/bin/brew
+
+# is this necessary?
+# - name: tap the cask
+#   homebrew_tap:
+#     name: caskroom/cask
+#     state: present
+
+- name: install homebrew applications
+  homebrew:
+    name: "{{ item }}"
+    state: installed
+    update_homebrew: yes
+  with_items: "{{ brew.apps }}"
+
+- name: install cask applications
+  homebrew_cask:
+    name: "{{ item }}"
+    state: installed 
+  with_items: "{{ brew.cask }}"
