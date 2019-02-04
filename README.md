@@ -9,4 +9,6 @@ From a stock MacOS installation. Install the following.
 
 After cloning this repository, cd into it and
 
-    ./setup.sh
+    ansible-playbook main.yml
+
+Run the other setup scripts with `./scripts/setup_osx.sh`

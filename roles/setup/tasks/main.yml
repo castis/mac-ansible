@@ -6,3 +6,8 @@
 
 - name: oh-my-zsh
   include: zsh.yml
+
+- name: make home and end behave themselves
+  copy:
+    src: DefaultKeyBinding.dict
+    dest: "{{ ansible_env.HOME + '/Library/KeyBindings/DefaultKeyBinding.dict' }}"
